@@ -332,7 +332,12 @@ impl<V, K> ConstrainedDelaunayTriangulation<V, K>
         self.constraints.resize(self.s.num_edges() * 2, false);
         self.num_constraints += 1;
     }
-    
+
+    /// Returns a handle to the infinite face.
+    pub fn infinite_face(&self) -> FaceHandle<V> {
+        self.s.face(0)
+    }
+
     fn get_conflict_region(&self,
                          v0: FixedVertexHandle,
                          v1: FixedVertexHandle)
